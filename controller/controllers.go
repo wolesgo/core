@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/wolesgo/core/ctx"
+	woles "github.com/wolesgo/woles"
 )
 
 type ControllerCollections struct {
@@ -60,7 +60,7 @@ func (controllers ControllerCollections) build(controllerClosure func() interfac
 func (controllers ControllerCollections) hookOnCreated(controller reflect.Value) {
 	onCreatedMethod := controller.MethodByName("OnCreated")
 
-	ctx := ctx.Ctx{}
+	ctx := woles.Ctx{}
 
 	if onCreatedMethod.IsValid() {
 		onCreatedMethod.Call([]reflect.Value{reflect.ValueOf(ctx)})

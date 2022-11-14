@@ -1,11 +1,11 @@
 package kernel
 
 import (
-	"github.com/wolesgo/core/container"
-	"github.com/wolesgo/core/contracts"
-	foundation "github.com/wolesgo/core/foundation/router"
+	"github.com/wolesgo/woles/container"
+	"github.com/wolesgo/woles/contracts"
+	foundation "github.com/wolesgo/woles/foundation/router"
 
-	"github.com/wolesgo/core/_tests/example/routing"
+	"github.com/wolesgo/woles/_tests/example/routing"
 )
 
 type Router struct {

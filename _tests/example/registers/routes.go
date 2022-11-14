@@ -1,7 +1,7 @@
 package registers
 
 import (
-	router "github.com/wolesgo/core/router/console"
+	router "github.com/wolesgo/woles/router/console"
 )
 
 func ConsoleRouter(router *router.Router) {

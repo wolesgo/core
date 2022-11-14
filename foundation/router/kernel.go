@@ -3,12 +3,12 @@ package foundation
 import (
 	"reflect"
 
-	"github.com/wolesgo/core/contracts"
-	foundation "github.com/wolesgo/core/foundation/controller"
+	"github.com/wolesgo/woles/contracts"
+	foundation "github.com/wolesgo/woles/foundation/controller"
 
-	"github.com/wolesgo/core/container"
+	"github.com/wolesgo/woles/container"
 
-	consoleRouter "github.com/wolesgo/core/router/console"
+	consoleRouter "github.com/wolesgo/woles/router/console"
 )
 
 type Router struct {

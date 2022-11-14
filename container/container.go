@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/wolesgo/core/contracts"
+	"github.com/wolesgo/woles/contracts"
 )
 
 type Container struct {

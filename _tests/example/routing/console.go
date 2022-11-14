@@ -1,6 +1,6 @@
 package routing
 
-import router "github.com/wolesgo/core/router/console"
+import router "github.com/wolesgo/woles/router/console"
 
 func ConsoleRouting(router *router.Router) {
 	router.Command(

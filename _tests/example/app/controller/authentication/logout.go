@@ -1,8 +1,8 @@
 package authentication
 
 import (
-	"github.com/wolesgo/core/controller"
-	"github.com/wolesgo/core/ctx"
+	woles "github.com/wolesgo/woles"
+	"github.com/wolesgo/woles/controller"
 )
 
 type LogoutController struct {
@@ -15,9 +15,9 @@ func NewLogoutController() any {
 	}
 }
 
-func (controller LogoutController) OnCreated(c ctx.Ctx) {
+func (controller LogoutController) OnCreated(c woles.Ctx) {
 	controller.BaseController.OnCreated(c)
 }
 
-func (controller LogoutController) Action(c ctx.Ctx) {
+func (controller LogoutController) Action(c woles.Ctx) {
 }

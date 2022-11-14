@@ -3,8 +3,8 @@ package authentication
 import (
 	"fmt"
 
-	"github.com/wolesgo/core/controller"
-	"github.com/wolesgo/core/ctx"
+	woles "github.com/wolesgo/woles"
+	"github.com/wolesgo/woles/controller"
 )
 
 type LoginController struct {
@@ -17,10 +17,10 @@ func NewLoginController() any {
 	}
 }
 
-func (controller LoginController) OnCreated(c ctx.Ctx) {
+func (controller LoginController) OnCreated(c woles.Ctx) {
 	controller.BaseController.OnCreated(c)
 }
 
-func (controller LoginController) Action(c ctx.Ctx) {
+func (controller LoginController) Action(c woles.Ctx) {
 	fmt.Println("LoginController@Action")
 }

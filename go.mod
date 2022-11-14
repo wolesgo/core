@@ -1,11 +1,8 @@
-module github.com/wolesgo/core
+module github.com/wolesgo/woles
 
 go 1.18
 
-require (
-	github.com/forgoer/openssl v1.2.1
-	golang.org/x/mod v0.7.0
-)
+require github.com/forgoer/openssl v1.2.1
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

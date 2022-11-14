@@ -3,8 +3,8 @@ package home
 import (
 	"fmt"
 
-	"github.com/wolesgo/core/controller"
-	"github.com/wolesgo/core/ctx"
+	woles "github.com/wolesgo/woles"
+	"github.com/wolesgo/woles/controller"
 )
 
 type HomeController struct {
@@ -17,10 +17,10 @@ func NewHomeController() any {
 	}
 }
 
-func (controller HomeController) OnCreated(c ctx.Ctx) {
+func (controller HomeController) OnCreated(c woles.Ctx) {
 	controller.BaseController.OnCreated(c)
 }
 
-func (controller HomeController) Action(c ctx.Ctx) {
+func (controller HomeController) Action(c woles.Ctx) {
 	fmt.Println("HomeController@Action", c)
 }

@@ -1,9 +1,9 @@
 package foundation
 
 import (
-	"github.com/wolesgo/core/container"
-	"github.com/wolesgo/core/contracts"
-	"github.com/wolesgo/core/controller"
+	"github.com/wolesgo/woles/container"
+	"github.com/wolesgo/woles/contracts"
+	"github.com/wolesgo/woles/controller"
 )
 
 type Controller struct {

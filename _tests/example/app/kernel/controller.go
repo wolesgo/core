@@ -1,13 +1,13 @@
 package kernel
 
 import (
-	"github.com/wolesgo/core/container"
-	"github.com/wolesgo/core/contracts"
-	"github.com/wolesgo/core/controller"
+	"github.com/wolesgo/woles/container"
+	"github.com/wolesgo/woles/contracts"
+	"github.com/wolesgo/woles/controller"
 
-	foundation "github.com/wolesgo/core/foundation/controller"
+	foundation "github.com/wolesgo/woles/foundation/controller"
 
-	"github.com/wolesgo/core/_tests/example"
+	"github.com/wolesgo/woles/_tests/example"
 )
 
 type Controller struct {

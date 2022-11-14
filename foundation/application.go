@@ -1,14 +1,8 @@
-package example
+package foundation
 
 import (
-	"sync"
-
-	"github.com/wolesgo/core/container"
+	"github.com/wolesgo/woles/container"
 )
-
-var once sync.Once
-
-var instance *Application
 
 type Application struct {
 	container.Container
@@ -17,13 +11,10 @@ type Application struct {
 }
 
 func New() *Application {
-	once.Do(func() {
-		instance = &Application{
-			container.New(),
-			false,
-		}
-	})
-	return instance
+	return &Application{
+		container.New(),
+		false,
+	}
 }
 
 func (application Application) Register() {
