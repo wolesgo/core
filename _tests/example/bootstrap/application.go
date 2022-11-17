@@ -6,7 +6,6 @@ import (
 
 	"github.com/wolesgo/woles/contracts"
 	"github.com/wolesgo/woles/foundation"
-	"golang.org/x/mod/modfile"
 
 	"github.com/wolesgo/woles/_tests/example/app/kernel"
 )
@@ -19,11 +18,7 @@ func New(Args []string) *foundation.Application {
 	once.Do(func() {
 		app = foundation.New()
 
-		goModBytes, err := ioutil.ReadFile("go.mod")
-		if err != nil {
-		}
-
-		app.BaseModulePath(modfile.ModulePath(goModBytes))
+		app.BaseModulePathByMod(ioutil.ReadFile("go.mod"))
 	})
 
 	app.Singleton(

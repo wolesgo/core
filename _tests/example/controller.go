@@ -6,8 +6,8 @@ import (
 	"github.com/wolesgo/woles/controller"
 )
 
-func Controllers(controllers *controller.ControllerCollections) {
-	controllers.Add(home.NewHomeController)
-	controllers.Add(authentication.NewLoginController)
-	controllers.Add(authentication.NewLogoutController)
+func Controllers(collections *controller.Collections) {
+	collections.Add(home.NewHomeController)
+	collections.Add(authentication.NewLoginController)
+	collections.Add(authentication.NewLogoutController)
 }

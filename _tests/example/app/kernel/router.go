@@ -19,7 +19,7 @@ func NewRouter(app container.Container) contracts.Singleton {
 }
 
 func (router Router) Register() {
-	routing.ConsoleRouting(router.Router.GetConsoleRouter())
+	routing.ConsoleRouting(router.GetConsoleRouter())
 
 	router.Router.Register()
 }

@@ -6,18 +6,17 @@ type RouteController struct {
 }
 
 type Route struct {
-	router Router
+	router *Router
 
-	signature   string
+	command     string
 	description string
 
 	controller RouteController
 }
 
-func NewRoute(signature string, description string, router Router) *Route {
+func NewRoute(command string, description string) *Route {
 	return &Route{
-		router:      router,
-		signature:   signature,
+		command:     command,
 		description: description,
 	}
 }
@@ -25,18 +24,15 @@ func NewRoute(signature string, description string, router Router) *Route {
 func (route *Route) Controller(controllerName string, handle string) *Route {
 	route.controller = RouteController{controllerName, handle}
 
-	// controller := route.router.controllerCallBack(controllerName)
+	return route
+}
 
-	// if controller.IsValid() {
+func (route *Route) Group(group func(router *Router)) *Route {
+	newRouter := New()
 
-	// 	selectedController := controller.MethodByName(handle)
+	group(newRouter)
 
-	// 	in := []reflect.Value{reflect.ValueOf(route)}
-
-	// 	val := selectedController.Call(in)
-
-	// 	fmt.Println(val)
-	// }
+	route.router = newRouter
 
 	return route
 }
@@ -45,6 +41,10 @@ func (route Route) GetDescription() string {
 	return route.description
 }
 
-func (route Route) GetSignature() string {
-	return route.signature
+func (route Route) GetCommand() string {
+	return route.command
+}
+
+func (route Route) GetRouter() *Router {
+	return route.router
 }

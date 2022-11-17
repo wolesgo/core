@@ -5,6 +5,7 @@ import (
 	"reflect"
 
 	"github.com/wolesgo/woles/contracts"
+	"golang.org/x/mod/modfile"
 )
 
 type Container struct {
@@ -47,7 +48,6 @@ func (container *Container) bind(abstract interface{}, concrete interface{}) {
 }
 
 func (container *Container) Resolve(abstract interface{}) interface{} {
-
 	abstractName := reflect.TypeOf(abstract).Elem().Name()
 
 	return container.bindingConcretes[abstractName]
@@ -65,9 +65,13 @@ func (container Container) Register() {
 	}
 }
 
-func (container *Container) BaseModulePath(modulePath string) interface{} {
-	container.baseModulePath = modulePath
-	return modulePath
+func (container *Container) BaseModulePathByMod(goModBytes []byte, err error) string {
+	if err != nil {
+	}
+
+	container.baseModulePath = modfile.ModulePath(goModBytes)
+
+	return container.baseModulePath
 }
 
 func (container Container) GetBaseModulePath(appendModulePath string) string {

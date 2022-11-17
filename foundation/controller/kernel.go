@@ -9,7 +9,7 @@ import (
 type Controller struct {
 	app container.Container
 
-	controllers *controller.ControllerCollections
+	controllers *controller.Collections
 }
 
 func NewController(app container.Container, opt controller.ControllerOption) contracts.ControllerKernelContract {
@@ -27,7 +27,7 @@ func (controller Controller) GetApplication() container.Container {
 	return controller.app
 }
 
-func (controller Controller) GetControllers() *controller.ControllerCollections {
+func (controller Controller) GetControllers() *controller.Collections {
 	return controller.controllers
 }
 

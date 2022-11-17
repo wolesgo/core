@@ -4,7 +4,6 @@ import (
 	"reflect"
 
 	"github.com/wolesgo/woles/contracts"
-	foundation "github.com/wolesgo/woles/foundation/controller"
 
 	"github.com/wolesgo/woles/container"
 
@@ -20,7 +19,6 @@ type Router struct {
 func NewRouter(app container.Container) contracts.RouterKernelContract {
 	return Router{
 		app,
-
 		&consoleRouter.Router{},
 	}
 }
@@ -37,8 +35,13 @@ func (router Router) bootstrap() {
 }
 
 func (router Router) Register() {
-
 	router.consoleRouter.RegisterControllerCallBack(router.RegisterControllerCallBack)
+
+	// routes := router.consoleRouter.GetRoutes()
+	// for _, v := range routes {
+	// 	fmt.Println(v)
+	// 	router.RegisterControllerCallBack("home/HomeController")
+	// }
 }
 
 func (router Router) RegisterControllerCallBack(controllerName string) reflect.Value {
@@ -46,7 +49,7 @@ func (router Router) RegisterControllerCallBack(controllerName string) reflect.V
 
 	var kernel = controllerKernel.(contracts.Singleton)
 
-	var controllers = kernel.(foundation.Controller).GetControllers()
+	var controllers = kernel.(contracts.ControllerKernelContract).GetControllers()
 
 	var handlerController = controllers.Get(controllerName)
 

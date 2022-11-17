@@ -8,13 +8,13 @@ import (
 	woles "github.com/wolesgo/woles"
 )
 
-type ControllerCollections struct {
+type Collections struct {
 	baseModulePath string
 	controllers    map[string]reflect.Value
 }
 
-func NewCollections(opt ControllerOption) *ControllerCollections {
-	controllers := &ControllerCollections{
+func NewCollections(opt ControllerOption) *Collections {
+	controllers := &Collections{
 		controllers: make(map[string]reflect.Value),
 	}
 
@@ -25,7 +25,7 @@ func NewCollections(opt ControllerOption) *ControllerCollections {
 	return controllers
 }
 
-func (collection ControllerCollections) Add(controllerClosure func() interface{}) reflect.Value {
+func (collection Collections) Add(controllerClosure func() interface{}) reflect.Value {
 	controller := collection.build(controllerClosure)
 
 	pkgPath := regexp.MustCompile(`\/+$`).ReplaceAllString(
@@ -47,17 +47,17 @@ func (collection ControllerCollections) Add(controllerClosure func() interface{}
 	return controller
 }
 
-func (collection ControllerCollections) Get(name string) reflect.Value {
+func (collection Collections) Get(name string) reflect.Value {
 	return collection.controllers[name]
 }
 
-func (controllers ControllerCollections) build(controllerClosure func() interface{}) reflect.Value {
+func (controllers Collections) build(controllerClosure func() interface{}) reflect.Value {
 	controller := controllerClosure()
 
 	return reflect.ValueOf(controller)
 }
 
-func (controllers ControllerCollections) hookOnCreated(controller reflect.Value) {
+func (controllers Collections) hookOnCreated(controller reflect.Value) {
 	onCreatedMethod := controller.MethodByName("OnCreated")
 
 	ctx := woles.Ctx{}

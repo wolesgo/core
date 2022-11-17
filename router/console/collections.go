@@ -1,10 +1,11 @@
 package router
 
-type RouteCollections []Route
+type RouteCollections []*Route
 
-func (routes *RouteCollections) Add(route Route) *Route {
+func (routes *RouteCollections) Add(route *Route) *Route {
 	*routes = append(*routes, route)
-	return &route
+
+	return route
 }
 
 func (routes RouteCollections) Get(route interface{}) Route {

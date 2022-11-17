@@ -1,6 +1,8 @@
 package router
 
-import "reflect"
+import (
+	"reflect"
+)
 
 type Router struct {
 	routes RouteCollections
@@ -18,22 +20,24 @@ func (router *Router) RegisterControllerCallBack(callback func(controllerName st
 	router.controllerCallBack = callback
 }
 
-func (router *Router) Command(signature string, description string) *Route {
-	return router.addCommand(signature, description)
+func (router *Router) Command(command string, description string) *Route {
+	return router.addCommand(command, description)
 }
 
-func (router *Router) addCommand(signature string, description string) *Route {
-	newRoute := router.routes.Add(
-		*router.createRoute(signature, description),
+func (router *Router) addCommand(command string, description string) *Route {
+	return router.routes.Add(
+		router.createRoute(command, description),
 	)
-
-	return newRoute
 }
 
-func (router Router) createRoute(signature string, description string) *Route {
-	return router.newRoute(signature, description)
+func (router Router) createRoute(command string, description string) *Route {
+	return router.newRoute(command, description)
 }
 
-func (router Router) newRoute(signature string, description string) *Route {
-	return NewRoute(signature, description, router)
+func (router Router) newRoute(command string, description string) *Route {
+	return NewRoute(command, description)
+}
+
+func (router Router) GetRoutes() RouteCollections {
+	return router.routes
 }

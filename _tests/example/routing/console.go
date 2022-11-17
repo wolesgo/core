@@ -1,29 +1,50 @@
 package routing
 
-import router "github.com/wolesgo/woles/router/console"
+import (
+	router "github.com/wolesgo/woles/router/console"
+)
 
-func ConsoleRouting(router *router.Router) {
-	router.Command(
-		"home",
-		"To login into the system",
-	).Controller(
-		"_tests/example/app/controllers/home/HomeController",
-		"Action",
-	)
+func ConsoleRouting(r *router.Router) {
 
-	router.Command(
+	r.Command(
+		"image",
+		"to get image",
+	).Group(func(r *router.Router) {
+		r.Command(
+			"ls",
+			"To ls.",
+		).Group(func(r *router.Router) {
+			r.Command(
+				"all",
+				"to all.",
+			).Controller(
+				"home/HomeController",
+				"Action",
+			)
+
+			r.Command(
+				"used",
+				"To used.",
+			).Controller(
+				"home/HomeController",
+				"Action",
+			)
+		})
+	})
+
+	r.Command(
 		"login",
 		"To login into the system",
 	).Controller(
-		"_tests/example/app/controllers/LoginController",
+		"LoginController",
 		"Action",
 	)
 
-	router.Command(
+	r.Command(
 		"logout",
 		"To logout from the system",
 	).Controller(
-		"_tests/example/app/controllers/LoginController",
+		"LoginController",
 		"Action",
 	)
 }
