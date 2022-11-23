@@ -19,7 +19,7 @@ type Router struct {
 func NewRouter(app container.Container) contracts.RouterKernelContract {
 	return Router{
 		app,
-		&consoleRouter.Router{},
+		consoleRouter.New(),
 	}
 }
 

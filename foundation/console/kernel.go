@@ -3,7 +3,6 @@ package foundation
 import (
 	"github.com/wolesgo/woles/container"
 	"github.com/wolesgo/woles/contracts"
-	router "github.com/wolesgo/woles/router/console"
 )
 
 type Console struct {
@@ -25,17 +24,8 @@ func (console Console) Handle(args []string) {
 
 	router := kernel.(contracts.RouterKernelContract).GetConsoleRouter()
 
-	console.HandleRoute(router)
-}
-
-func (console Console) HandleRoute(router *router.Router) {
-	for _, v := range router.GetRoutes() {
-		router := v.GetRouter()
-
-		if router != nil {
-			console.HandleRoute(router)
-		}
-	}
+	router.MatchRoute(args)
+	// console.HandleRoute(router)
 }
 
 func (console Console) GetApplication() *container.Container {
